@@ -25,26 +25,29 @@
 #EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 #Authors:
-#
+#       Yufei, Chen <yufeix.chen@intel.com>
+
 local_path=$(cd "$(dirname $0)";pwd)
-path=$(dirname $(dirname $0))
-PACKAGENAME="3d_test.wgt"
-source $path/stablonglast3d/xwalk_common.sh
-APP_NAME="3d_test"
-SLEEP=86400
-uninstall_app $APP_NAME
-install_app $PACKAGENAME
-launch_app $APP_NAME
-$local_path/Generatesysmon.sh $SLEEP `(basename $0)` $appid &
+sleep 10
+sysmonFolder=$2"_sysmon_"`date '+%Y%m%d%H%M'`
+mkdir /tmp/$sysmonFolder
+
+times=$[ $1 / 10 ]
+while [ $times -ne "0" ]
+do
+    pid=`ps aux | grep "$3" | grep -v "grep" | grep -v $2 | grep -v disable | awk '{print $2}'`
+    echo $pid >> /tmp/$sysmonFolder/cpu.res
+    echo `date` >> /tmp/$sysmonFolder/cpu.res
+    echo `date` >> /tmp/$sysmonFolder/fd.res
+    echo `date` >> /tmp/$sysmonFolder/mem.res
+    ps aux |grep -w $pid | grep -v 'grep' >> /tmp/$sysmonFolder/cpu.res
+    uptime >> /tmp/$sysmonFolder/uptime.res
+    ls -l /proc/$pid/fd >> /tmp/$sysmonFolder/fd.res
+    cat /proc/$pid/status |grep -E 'VmSize|VmRSS' >> /tmp/$sysmonFolder/mem.res
+    times=$(($times - 1))
+    sleep 10
+done
+
 sleep 2
-if [[ "$launch_statue" =~ "launched" ]];then
-   sleep 86400
-   get_app_statu=`app_launcher -r thrdoptest.twodframeplaytest`
-   if [[ "$get_app_statu" =~ "running" ]];then
-       app_launcher -k thrdoptest.twodframeplaytest
-   else
-       exit 1
-   fi
-else
-    exit 1
-fi
+#kill self
+kill -9 $$

@@ -27,13 +27,18 @@
 #Authors:
 #
 
+local_path=$(cd "$(dirname $0)";pwd)
+
 path=$(dirname $(dirname $0))
 PACKAGENAME="2d_test.wgt"
 source $path/stablonglast2d/xwalk_common.sh
 APP_NAME="2d_test"
+SLEEP=86400
+#monitor device info
 uninstall_app $APP_NAME
 install_app $PACKAGENAME
 launch_app $APP_NAME
+$local_path/Generatesysmon.sh $SLEEP `(basename $0)` $appid &
 sleep 2
 if [[ "$launch_statue" =~ "launched" ]];then
    sleep 86400
@@ -46,3 +51,6 @@ if [[ "$launch_statue" =~ "launched" ]];then
 else
     exit 1
 fi
+
+echo "End........"
+
