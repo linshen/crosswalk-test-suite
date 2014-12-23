@@ -53,6 +53,9 @@ Authors:
         <li>Install the webapp res/testapp/wgt_sample_two.wgt </li>
         <li>Switch to app account by: "su app"</li>
         <li>'$app_launcher -l' to list the installed webapp </li>
+        <li>Launch a tizen app in remote debugging mode: app_launcher -s [AppID] -d</li>
+        <li>In Chrome/Firefox on PC, connect devtools, in url bar input "http://tizen-ip:port/json/new?http://baidu.com".</li>
+        <li>In Chrome/Firefox on PC, in url bar input "http://tizen-ip:port/json/list".</li>
       </ol>
     </div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false">
@@ -66,7 +69,10 @@ Authors:
          <li>Input pwd, the 'guest' account can be switch successfully</li>
          <li>The webapp should be installed successfully</li>
          <li>The 'app' account can be switch successfully</li>
-         <li>The wgt_sample_two webapp should not be listed</li>         
+         <li>The wgt_sample_two webapp should not be listed</li> 
+         <li>Launch tizen app successful</li>
+         <li>Open a new window loaded with the url</li>
+         <li>The json key faviconUrl has corresponding value.  </li>        
         </ol>
       </font>
     </div>
