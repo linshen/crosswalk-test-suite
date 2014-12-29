@@ -26,43 +26,40 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Xu, Kang <kangx.xu@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Crosswalk_Packer_Tool_AnyLocation_HostApp</title>
-    <link rel="author" title="Intel" href="http://www.intel.com">
-  </head>
-  <body>
-    <p>
-      <strong>Pre_condition:</strong>
-    </p>
-    <ol>
-      <li>Set the PATH variable and run the steps from a different directory with file make_apk.py:<br/>
-          $ chmod +x make_apk.py<br/>
-          $ export PATH=$PATH:&lt;absolute path of make_apk.py&gt;
-      </li>
-    </ol>
-    <p>
-      <strong>Test steps:</strong>
-    </p>
-    <ol>
-      <li>Package an web app with command like: make_apk.py --name=[name] --package=[package] --app-url=http://www.baidu.com --arch=x86</li>
-      <li>Install the apk packaged</li>
-      <li>Launch the webapp</li>
-      <li>Uninstall the webapp</li>
-    </ol>
-    <p>
-      <strong>Expected Output:</strong>
-    </p>
-    <ol>
-      <li>Generate APK installation package successfully</li>
-      <li>Install web app successfully</li>
-      <li>Launch web app successfully</li>
-      <li>Uninstall web app successfully</li>
-    </ol>
-  </body>
-</html>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+<link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css">
+<script src="../../js/jquery/jquery.js"></script>
+<script src="../../js/jquery/jquery.mobile.js"></script>
+<script src="../../js/tests.js"></script>
+<div data-role="page" id="main">
+  <div data-role="header" data-position="fixed" data-tap-toggle="false">
+    <h1 id="main_page_title"></h1>
+  </div>
+  <div id="content">
+    <iframe width="100%" height="500px;" src="res/index.html"></iframe>
+  </div>
+
+  <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+  </div>
+
+  <div data-role="popup" id="popup_info">
+    <font style="font-size:85%">
+      <p>Test purpose: </p>
+      <ol>
+        <li>Check if reportValidity() method supported or not.</li>
+      </ol>
+      <p>Test step: </p>
+      <ol>
+        <li>Click ReportValidity button to check input.</li>
+      </ol>
+      <p>Expected result: </p>
+      <p>There is a small popup under the input for validity.</p>
+    </font>
+  </div>
+</div>
+

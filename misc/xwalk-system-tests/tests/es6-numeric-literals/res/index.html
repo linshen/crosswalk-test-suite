@@ -26,43 +26,25 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Xu, Kang <kangx.xu@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Crosswalk_Packer_Tool_AnyLocation_Manifest</title>
-    <link rel="author" title="Intel" href="http://www.intel.com">
-  </head>
-  <body>
-    <p>
-      <strong>Pre_condition:</strong>
-    </p>
-    <ol>
-      <li>Set the PATH variable and run the steps from a different directory with file make_apk.py:<br/>
-          $ chmod +x make_apk.py<br/>
-          $ export PATH=$PATH:&lt;absolute path of make_apk.py&gt;
-      </li>
-    </ol>
-    <p>
-      <strong>Test steps:</strong>
-    </p>
-    <ol>
-      <li>Package an web app with command like: make_apk.py --package=[package] --manifest=[manifest-path]/manifest.json --arch=arm</li>
-      <li>Install the apk packaged</li>
-      <li>Launch the webapp</li>
-      <li>Uninstall the webapp</li>
-    </ol>
-    <p>
-      <strong>Expected Output:</strong>
-    </p>
-    <ol>
-      <li>Generate APK installation package successfully</li>
-      <li>Install web app successfully</li>
-      <li>Launch web app successfully</li>
-      <li>Uninstall web app successfully</li>
-    </ol>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>ES6 numeric literals</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<div>This usecase is for ES6 numeric literals.</div>
+<p>Available in <a href="http://www.chromestatus.com/feature/5433505009893376">Chrome 40+</a></p>
+<br>
+<label>0b111110111 === 503 : </label><div id="blog"></div>
+<label>0o767 === 503 : </label><div id="olog"></div>
+<script>
+function test(num1, num2, id) {
+  if (num1 === num2)
+    document.querySelector("#"+id).innerHTML = 'true';
+  else
+    document.querySelector("#"+id).innerHTML = 'false';
+}
+test(0b111110111, 503, "blog");
+test(0o767, 503, "olog");
+</script>
